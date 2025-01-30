@@ -6,3 +6,15 @@
 body {
     font-family: Press-Start;
 }
+
+.light-yellow {
+    background-color: #FCFFA5 !important;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.dark-yellow {
+    background-color: #FDFF7A !important;
+    color: black !important;
+    text-decoration: none !important;
+}

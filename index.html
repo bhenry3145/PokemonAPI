@@ -7,6 +7,7 @@
     <title>Pokémon API</title>
     <link rel="stylesheet" href="./src/output.css">
     <link rel="stylesheet" href="./src/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body class="bg-[#506DC4]">
@@ -17,15 +18,15 @@
         class="bg-[#6CF0B5] justify-self-center w-fit h-fit ml-8 mr-8 grid grid-cols-2 grid-rows-11-auto md:grid md:grid-rows-12 md:grid-cols-2 lg:grid lg:grid-rows-6 lg:grid-cols-4">
 
         <h1 id="pokeName"
-            class="bg-[#FCFFA5] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] lg:text-[36px] row-start-1 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-1 md:m-1 md:p-2 md:col-start-1 md:col-end-2 md:h-[50px] lg:h-fit lg:col-start-1 lg:col-end-3">
+            class="bg-[#FCFFA5] md:bg-[#FDFF7A] lg:bg-[#FCFFA5] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] lg:text-[36px] row-start-1 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-1 md:p-2 md:col-start-1 md:col-end-2 md:h-[50px] lg:h-fit lg:col-start-1 lg:col-end-3">
             NAME</h1>
 
         <h1 id="pokeLocation"
-            class="bg-[#FDFF7A] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-2 col-start-1 col-end-3 p-4 m-2 md:row-start-2 md:col-start-1 md:col-end-2 md:m-1 md:p-2 md:h-[50px] lg:row-start-1 lg:col-start-3 lg:col-end-5 lg:text-[36px] lg:h-fit lg:m-4 lg:p-4">
+            class="bg-[#FDFF7A] md:bg-[#FCFFA5] lg:bg-[#FDFF7A] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-2 col-start-1 col-end-3 p-4 m-2 md:row-start-2 md:col-start-1 md:col-end-2 md:p-2 md:h-[50px] lg:row-start-1 lg:col-start-3 lg:col-end-5 lg:text-[32px] lg:h-fit lg:m-4 lg:p-4">
             LOCATION</h1>
 
         <div
-            class="bg-[#FCFFA5] justify-self-center w-[90%] md:w-[95%] lg:w-[90%] rounded-[15px] text-[20px] row-start-3 col-start-1 col-end-3 p-4 m-2 md:row-start-3 md:row-span-2 md:col-start-1 md:m-1 md:p-2 md:col-span-2 md:h-[100px] lg:row-start-2 lg:col-start-1 lg:col-end-3 lg:text-[36px] lg:h-fit lg:m-4 lg:p-4">
+            class="bg-[#FCFFA5] md:bg-[#FDFF7A] justify-self-center w-[90%] md:w-[95%] lg:w-[90%] rounded-[15px] text-[20px] row-start-3 col-start-1 col-end-3 p-4 m-2 md:row-start-3 md:row-end-5 md:col-start-1 md:p-2 md:col-span-2 md:h-[100px] lg:row-start-2 lg:col-start-1 lg:col-end-3 lg:text-[36px] lg:h-fit lg:m-4 lg:p-4">
             <h1 class="text-left">TYPE</h1>
             <!-- <div class="flex flex-row">
                     <h1 class="bg-[#EE8130] self-center p-1 text-center border-4 m-2 w-[30%] rounded-[15px] text-[16px]">FIRE</h1>
@@ -50,7 +51,7 @@
         </div>
 
         <div
-            class="flex flex-row justify-self-center justify-between w-[90%] row-start-4 row-end-5 col-start-1 col-end-3 m-2 lg:m-4 lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-5 lg:row-span-2 lg:justify-between md:row-start-5 md:row-end-9 md:col-start-1 md:col-span-2">
+            class="flex flex-row justify-self-center justify-between w-[90%] row-start-4 row-end-5 col-start-1 col-end-3 m-2 lg:m-4 lg:col-start-1 lg:col-end-3 lg:row-start-3 lg:row-end-5 lg:row-span-2 lg:justify-between md:row-start-5 md:row-end-8 md:col-start-1 md:col-span-2">
             <img id="pokemonSprite" class="bg-[#FAD69F] w-[125px] h-[125px] md:w-[200px] md:h-[200px] lg:w-[250px] lg:h-[250px] rounded-[15px]"
                 src="" alt="Regular Pokémon">
             <img id="pokemonShinySprite"
@@ -60,45 +61,45 @@
 
         <div
             class="flex flex-row justify-self-center justify-between w-[90%] m-2 row-start-6 col-start-1 col-end-3 md:row-start-8 md:row-end-10 lg:m-4 lg:row-start-4 lg:col-start-3 lg:col-end-5">
-            <img id="pokemonFirstEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[100px] md:h-[100px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
+            <img id="pokemonFirstEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[125px] md:h-[125px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
                 alt="First Evo Pokémon">
             <i class="fa-solid fa-arrow-right self-center" style="color: #000000;"></i>
-            <img id="pokemonSecondEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[100px] md:h-[100px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
+            <img id="pokemonSecondEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[125px] md:h-[125px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
                 alt="Second Evo Pokémon">
             <i class="fa-solid fa-arrow-right self-center" style="color: #000000;"></i>
-            <img id="pokemonThirdEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[100px] md:h-[100px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
+            <img id="pokemonThirdEvo" class="bg-[#FAD69F] w-[75px] h-[75px] md:w-[125px] md:h-[125px] lg:w-[150px] lg:h-[150px] self-center rounded-[15px]" src=""
                 alt="Third Evo Pokémon">
         </div>
 
         <h1
-            class="bg-[#FDFF7A] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-7 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-10 md:col-start-1 md:col-end-2 md:h-[50px] lg:col-start-3 lg:col-end-5 lg:row-start-2 lg:h-fit lg:text-[36px]">
+            class="bg-[#FDFF7A] md:bg-[#FCFFA5] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-7 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-10 md:col-start-1 md:col-end-2 md:h-[50px] md:text-[16px] lg:col-start-3 lg:col-end-5 lg:row-start-2 lg:h-fit lg:text-[36px]">
             DISPLAY MOVES</h1>
 
-        <h1 class="bg-[#FCFFA5] justify-self-center w-[90%] p-4 rounded-[15px] text-center text-[16px] row-start-8 col-start-1 col-end-3 lg:m-4 lg:p-4 m-2 md:row-start-10 md:col-start-2 md:h-[50px] lg:col-start-3 lg:col-end-5 lg:row-start-3 lg:h-fit lg:text-[32px]">
+        <h1 class="bg-[#FCFFA5] md:bg-[#FDFF7A] justify-self-center w-[90%] p-4 rounded-[15px] text-center text-[16px] row-start-8 col-start-1 col-end-3 lg:m-4 lg:p-4 m-2 md:row-start-10 md:col-start-2 md:h-[50px] md:text-[14px] lg:col-start-3 lg:col-end-5 lg:row-start-3 lg:h-fit lg:text-[32px]">
             DISPLAY ABILITIES</h1>
 
 
-        <h1
-            class="bg-[#FDFF7A] text-[14px] rounded-[15px] text-center lg:w-[90%] m-4 p-4 row-start-9 col-start-1 col-end-2 md:row-start-11 md:col-start-2 md:col-end-3 md:h-[50px] md:text-[20px] lg:row-start-4 lg:row-end-4 lg:col-start-4 lg:col-end-5 lg:h-fit lg:text-[24px] lg:m-4 lg:p-4">
+        <button id="addToFavorites"
+            class="bg-[#FDFF7A] md:bg-[#FCFFA5] text-[14px] rounded-[15px] text-center lg:w-[90%] m-4 p-4 row-start-9 col-start-1 col-end-2 md:row-start-11 md:col-start-2 md:col-end-3 md:h-[50px] md:text-[16px] lg:row-start-4 lg:row-end-4 lg:col-start-4 lg:col-end-5 lg:h-fit lg:text-[24px] lg:m-4 lg:p-4">
             ADD
-            TO FAVORITES</h1>
+            TO FAVORITES</button>
 
-        <h1
-            class="bg-[#FDFF7A] rounded-[15px] text-center text-[14px] lg:w-[90%] m-4 p-4 row-start-9 col-start-2 col-end-3 md:row-start-11 md:col-start-1 md:col-end-2 md:h-[50px] lg:row-start-4 lg:row-end-4 lg:col-start-3 lg:col-end-4 lg:h-fit lg:text-[24px] lg:m-4 lg:p-4">
-            DISPLAY FAVORITES</h1>
+        <button
+            class="bg-[#FDFF7A] lg:bg-[#FCFFA5] lg:bg-[] rounded-[15px] text-center text-[14px] lg:w-[90%] m-4 p-4 row-start-9 col-start-2 col-end-3 md:row-start-11 md:col-start-1 md:col-end-2 md:h-[50px] lg:row-start-4 lg:row-end-4 lg:col-start-3 lg:col-end-4 lg:h-fit lg:text-[24px] lg:m-4 lg:p-4">
+            DISPLAY FAVORITES</button>
 
 
         <button id="randomBtn"
-            class="bg-[#FCFFA5] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-10 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-1 md:row-end-3 md:col-start-2 md:h-[100px] md:m-1 md:p-2 lg:col-start-1 lg:col-end-3 lg:row-start-5 lg:row-end-6 lg:text-[36px]">
+            class="bg-[#FCFFA5] justify-self-center w-[90%] rounded-[15px] text-center text-[20px] row-start-10 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 m-2 md:row-start-1 md:row-end-3 md:col-start-2 md:h-[110px] md:p-2 lg:col-start-1 lg:col-end-3 lg:row-start-5 lg:row-end-6 lg:text-[36px]">
             RANDOMIZE</button>
 
 
         <input id="pokemonName"
-            class="bg-[#FDFF7A] justify-self-center w-[90%] row-start-11 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 rounded-[15px] text-center text-[12px] placeholder-black m-2 md:row-start-12 md:col-start-1 md:col-end-2 md:h-[50px] lg:row-start-6 lg:col-start-1 lg:col-end-3 lg:text-[32px] lg:h-fit"
+            class="bg-[#FDFF7A] md:bg-[#FCFFA5] lg:bg-[#FDFF7A] justify-self-center w-[90%] row-start-11 col-start-1 col-end-3 lg:m-4 lg:p-4 p-4 rounded-[15px] text-center text-[12px] placeholder-black m-2 md:row-start-12 md:col-start-1 md:col-end-2 md:h-[50px] lg:row-start-6 lg:col-start-1 lg:col-end-3 lg:text-[32px] lg:h-fit"
             type="text" placeholder="ENTER NAME OR ID # HERE">
 
         <h1 id="fetchPokemon"
-            class="bg-[#FCFFA5] justify-self-center w-[90%] row-start-12 col-start-1 col-end-3 rounded-[15px] text-center text-[20px] lg:m-4 lg:p-4 p-4 m-2 md:row-start-12 md:col-start-2 md:col-end-3 md:h-[50px] lg:h-fit lg:row-start-6 lg:col-start-3 lg:col-end-5 lg:text-[36px]">
+            class="bg-[#FCFFA5] md:bg-[#FDFF7A] justify-self-center w-[90%] row-start-12 col-start-1 col-end-3 rounded-[15px] text-center text-[20px] lg:m-4 lg:p-4 p-4 m-2 md:row-start-12 md:col-start-2 md:col-end-3 md:h-[50px] md:text-[16px] lg:h-fit lg:row-start-6 lg:col-start-3 lg:col-end-5 lg:text-[36px]">
             FETCH POKéMON</h1>
 
     </div>
@@ -110,6 +111,7 @@
 
     <script type="module" src="./scripts/app.js"></script>
     <script src="https://kit.fontawesome.com/ca5828ba63.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
 </body>
 
 </html>
