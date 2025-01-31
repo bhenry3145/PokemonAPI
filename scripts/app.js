@@ -64,16 +64,6 @@ const FetchData = async() => {
     Pokemon(data);
 }
 
-const getEevee = async (data) => {
-
-    let eeveeArray = [];
-    for (let i = 0; i < data.chain.evolves_to.length; i++)
-    {
-        eeveeArray.push(data.chain.evolves_to[i].species.name);
-    }
-    console.log(eeveeArray);
-}
-
 const GenerateRandom = async () => {
     let randomPokemon = Math.floor(Math.random() * 649) + 1;
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`);
@@ -126,7 +116,7 @@ const GetLocation = async (data) => {
     let locationData = await fetch(data.location_area_encounters);
     let location = await locationData.json();
     let pokeLocation = document.getElementById('pokeLocation');
-    if (locationData == "")
+    if (locationData == "" || locationData == null)
     {
         pokeLocation.innerText = "N/A";
     }
