@@ -24,4 +24,14 @@ And a Favorites list utilizing local storage
 Fully Responsive using Tailwind CSS https://tailwindcss.com
 Have a Prototype in Figma (Desktop, Tablet, Mobile)
 
-Peer Review:
+Peer Review: robert g
+- i wasnt able to run ``npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch`` from my pov it looks good
+- the enter button does not work for input box you can try this
+
+``
+userInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        submit.click();
+    }
+});
+``
