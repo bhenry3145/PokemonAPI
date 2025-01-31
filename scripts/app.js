@@ -53,12 +53,10 @@ const GetEvolution = async (data) => {
 }
 
 const GetLocation = async (data) => {
-    console.log(data);
     let locationData = await fetch(data.location_area_encounters);
-    
     let location = await locationData.json();
     let pokeLocation = document.getElementById('pokeLocation');
-    if (locationData == null || locationData == "")
+    if (locationData == "")
     {
         pokeLocation.innerText = "N/A";
     }
@@ -72,10 +70,8 @@ const Pokemon = async (pokemonData) => {
     pokemonFirstEvo.src = "";
     pokemonSecondEvo.src = "";
     pokemonThirdEvo.src = "";
-    console.log(pokemonData);
     GetLocation(pokemonData);
     let evoData = await GetEvolution(pokemonData);
-    // console.log(evoData);
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.species.name}`);
     const pokeData = await promise.json();
     if (evoData.chain.evolves_to[0]) {
