@@ -16,6 +16,14 @@ const pokemonShinySprite = document.getElementById('pokemonShinySprite');
 const pokemonFirstEvo = document.getElementById('pokemonFirstEvo');
 const pokemonSecondEvo = document.getElementById('pokemonSecondEvo');
 const pokemonThirdEvo = document.getElementById('pokemonThirdEvo');
+const displayFavorites = document.getElementById('displayFavorites');
+const closeFavorites = document.getElementById('closeFavorites');
+const displayAbilities = document.getElementById('displayAbilities');
+const closeAbilities = document.getElementById('closeAbilities');
+const abilitiesList = document.getElementById('abilitiesList');
+const displayMoves = document.getElementById('displayMoves');
+const closeMoves = document.getElementById('closeMoves');
+const movesList = document.getElementById('movesList');
 
 const FetchData = async() => {
     const pokemonName = document.getElementById('pokemonName').value.toLowerCase();
@@ -103,7 +111,31 @@ randomBtn.addEventListener('click', () => {
     GenerateRandom();
 })
 
-addToFavorites.addEventListener('click', () => {
+displayFavorites.addEventListener('click', () => {
+    favorites.classList.toggle('hidden');
+})
+
+closeFavorites.addEventListener('click', () => {
+    favorites.classList.toggle('hidden');
+})
+
+displayAbilities.addEventListener('click', () => {
+    abilities.classList.toggle('hidden');
+})
+
+closeAbilities.addEventListener('click', () => {
+    abilities.classList.toggle('hidden');
+})
+
+displayMoves.addEventListener('click', () => {
+    moves.classList.toggle('hidden');
+})
+
+closeMoves.addEventListener('click', () => {
+    moves.classList.toggle('hidden');
+})
+
+addToFavorites.addEventListener('click', function(event) {
     let userInput = pokemonName.value;
     saveToLocalStorage(userInput);
     LoadFavorites();
@@ -111,25 +143,26 @@ addToFavorites.addEventListener('click', () => {
 
 // LoadFavorites();
 
-// const LoadFavorites = async () => {
+const LoadFavorites = async () => {
 
-//     let localStorage = getFromLocalStorage();
-//     favoritesList.innerText = "";
-//     localStorage.map(favorites => {
-//         let h1tag = document.createElement('h1');
-//         let removeButton = document.createElement('button');
-//         removeButton.innerText = "x";
-//         removeButton.addEventListener('click', () => {
-//             removeFromLocalStorage(favorites);
-//             h1tag.remove();
-//     })
+    let localStorage = getFromLocalStorage();
+    favoritesList.innerText = "";
+    localStorage.map(favorites => {
+        let liTag = document.createElement('li');
+        let removeButton = document.createElement('button');
+        removeButton.innerText = "x";
+        removeButton.addEventListener('click', () => {
+            removeFromLocalStorage(favorites);
+            liTag.remove();
+    })
     
-//         h1tag.innerText = favorites;
-//         h1tag.addEventListener('click', function() {
-//             favoritesLoading(favorites);
-//         })
-//         h1tag.appendChild(removeButton);
-//         favoritesList.appendChild(h1tag);
-//     })
+        liTag.innerText = favorites;
+        liTag.addEventListener('click', function() {
+            // favoritesLoading(favorites);
+        })
+        liTag.appendChild(removeButton);
+        favoritesList.appendChild(liTag);
+    })
 
-// }
+}
+
