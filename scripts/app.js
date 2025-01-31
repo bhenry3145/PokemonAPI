@@ -4,9 +4,8 @@ import { saveToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from 
 // const pokemonShinySprite = document.getElementById('pokemonShinySprite');
 const fetchPokemon = document.getElementById('fetchPokemon');
 const pokeName = document.getElementById('pokeName');
-const pokemonFirstEvoName = document.getElementById('pokemonFirstEvoName');
-const pokemonSecondEvoName = document.getElementById('pokemonSecondEvoName');
-const pokemonThirdEvoName = document.getElementById('pokemonThirdEvoName');
+const pokeTypes = document.getElementById('pokeTypes');
+
 const randomBtn = document.getElementById('randomBtn');
 const addToFavorites = document.getElementById('addToFavorites');
 const pokemonName = document.getElementById('pokemonName');
@@ -16,6 +15,11 @@ const pokemonShinySprite = document.getElementById('pokemonShinySprite');
 const pokemonFirstEvo = document.getElementById('pokemonFirstEvo');
 const pokemonSecondEvo = document.getElementById('pokemonSecondEvo');
 const pokemonThirdEvo = document.getElementById('pokemonThirdEvo');
+const pokemonFourthEvo = document.getElementById('pokemonFourthEvo');
+const pokemonFifthEvo = document.getElementById('pokemonFifthEvo');
+const pokemonSixthEvo = document.getElementById('pokemonSixthEvo');
+const pokemonSeventhEvo = document.getElementById('pokemonSeventhEvo');
+const pokemonEighthEvo = document.getElementById('pokemonEighthEvo');
 const displayFavorites = document.getElementById('displayFavorites');
 const closeFavorites = document.getElementById('closeFavorites');
 const displayAbilities = document.getElementById('displayAbilities');
@@ -24,14 +28,50 @@ const abilitiesList = document.getElementById('abilitiesList');
 const displayMoves = document.getElementById('displayMoves');
 const closeMoves = document.getElementById('closeMoves');
 const movesList = document.getElementById('movesList');
+const evolutionContainer = document.getElementById('evolutionContainer');
 
 const FetchData = async() => {
     const pokemonName = document.getElementById('pokemonName').value.toLowerCase();
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
     const data = await promise.json();
-    // console.log(data);
+    if (data.id > 649)
+    {
+        pokeName.innerText = "GENS 1 - 5 ONLY";
+        return;
+    }
     pokeName.innerText = data.species.name.toUpperCase();
+    let typeArray = [];
+    for (let i = 0; i < data.types.length; i++)
+    {
+        typeArray.push(data.types[i].type.name);
+    }
+    pokeTypes.innerText = typeArray.join(" ").toUpperCase();
+
+    let movesArray = [];
+    for (let i = 0; i < data.moves.length; i++)
+    {
+        movesArray.push(data.moves[i].move.name);
+    }
+    movesList.innerText = movesArray.join(", ").toUpperCase();
+
+    let abilitiesArray = [];
+    for (let i = 0; i < data.abilities.length; i++)
+    {
+        abilitiesArray.push(data.abilities[i].ability.name);
+    }
+    abilitiesList.innerText = abilitiesArray.join(",").toUpperCase();
+
     Pokemon(data);
+}
+
+const getEevee = async (data) => {
+
+    let eeveeArray = [];
+    for (let i = 0; i < data.chain.evolves_to.length; i++)
+    {
+        eeveeArray.push(data.chain.evolves_to[i].species.name);
+    }
+    console.log(eeveeArray);
 }
 
 const GenerateRandom = async () => {
@@ -39,8 +79,30 @@ const GenerateRandom = async () => {
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemon}`);
     const data = await promise.json();
     pokeName.innerText = data.species.name.toUpperCase();
-    pokemonSprite.src = data.sprites.front_default;
-    pokemonShinySprite.src = data.sprites.front_shiny;
+    pokemonSprite.src = data.sprites.other["official-artwork"].front_default;
+    pokemonShinySprite.src = data.sprites.other["official-artwork"].front_shiny;
+    let typeArray = [];
+    for (let i = 0; i < data.types.length; i++)
+    {
+        typeArray.push(data.types[i].type.name);
+    }
+    pokeTypes.innerText = typeArray.join(" ").toUpperCase();
+
+    let movesArray = [];
+    for (let i = 0; i < data.moves.length; i++)
+    {
+        movesArray.push(data.moves[i].move.name);
+    }
+    movesList.innerText = movesArray.join(", ").toUpperCase();
+
+    let abilitiesArray = [];
+    for (let i = 0; i < data.abilities.length; i++)
+    {
+        abilitiesArray.push(data.abilities[i].ability.name);
+    }
+    abilitiesList.innerText = abilitiesArray.join(", ").toUpperCase();
+
+    pokemonName.value = "";
     Pokemon(data);
 }
 
@@ -75,32 +137,37 @@ const GetLocation = async (data) => {
 }
 
 const Pokemon = async (pokemonData) => {
-    pokemonFirstEvo.src = "";
-    pokemonSecondEvo.src = "";
-    pokemonThirdEvo.src = "";
+    evolutionContainer.innerHTML = "";
     GetLocation(pokemonData);
     let evoData = await GetEvolution(pokemonData);
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.species.name}`);
     const pokeData = await promise.json();
-    if (evoData.chain.evolves_to[0]) {
-        const promise2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.evolves_to[0].species.name}`);
-        const pokeData2 = await promise2.json();
-        pokemonSecondEvo.src = pokeData2.sprites.front_default;
-    }
-    if (evoData.chain.evolves_to[0].evolves_to[0])
+    let eevee = document.createElement('img');
+    eevee.src = pokeData.sprites.front_default;
+    eevee.classList.add('bg-[#FAD69F]', 'w-[75px]', 'h-[75px]', 'md:w-[125px]', 'md:h-[125px]', 'lg:w-[150px]', 'lg:h-[150px]', 'self-center', 'rounded-[15px]')
+    evolutionContainer.appendChild(eevee);
+    for (let i = 0; i < evoData.chain.evolves_to.length; i++)
     {
-        const promise3 = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.evolves_to[0].evolves_to[0].species.name}`);
-        const pokeData3 = await promise3.json();
-        pokemonThirdEvo.src = pokeData3.sprites.front_default;
+        const eeveePromise = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.evolves_to[i].species.name}`);
+        const eeveeData = await eeveePromise.json();
+        let eevee2 = document.createElement('img');
+        eevee2.src = eeveeData.sprites.other["official-artwork"].front_default;
+        eevee2.classList.add('bg-[#FAD69F]', 'w-[75px]', 'h-[75px]', 'md:w-[125px]', 'md:h-[125px]', 'lg:w-[150px]', 'lg:h-[150px]', 'self-center', 'rounded-[15px]', 'm-2')
+        evolutionContainer.appendChild(eevee2);
+        for (let j = 0; j < evoData.chain.evolves_to[i].evolves_to.length; j++)
+            {
+                const eeveePromise2 = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.evolves_to[i].evolves_to[j].species.name}`);
+                const eeveeData2 = await eeveePromise2.json();
+                let eevee3 = document.createElement('img');
+                eevee3.src = eeveeData2.sprites.other["official-artwork"].front_default;
+                eevee3.classList.add('bg-[#FAD69F]', 'w-[75px]', 'h-[75px]', 'md:w-[125px]', 'md:h-[125px]', 'lg:w-[150px]', 'lg:h-[150px]', 'self-center', 'rounded-[15px]')
+                evolutionContainer.appendChild(eevee3);
+            }
     }
-    pokemonSprite.src = pokemonData.sprites.front_default;
-    pokemonShinySprite.src = pokemonData.sprites.front_shiny;
-    pokemonFirstEvo.src = pokeData.sprites.front_default;
-    const imgElement = document.getElementById("pokemonSprite");
-    const imgElement2 = document.getElementById('pokemonShinySprite');
-    const imgElement3 = document.getElementById('pokemonFirstEvoSprite');
-    const imgElement4 = document.getElementById('pokemonSecondEvoSprite');
-    const imgElement5 = document.getElementById('pokemonThirdEvoSprite');
+    
+    pokemonSprite.src = pokemonData.sprites.other["official-artwork"].front_default;
+    pokemonShinySprite.src = pokemonData.sprites.other["official-artwork"].front_shiny;
+    
 }
 
 fetchPokemon.addEventListener('click', () => {
@@ -136,33 +203,38 @@ closeMoves.addEventListener('click', () => {
 })
 
 addToFavorites.addEventListener('click', function(event) {
-    let userInput = pokemonName.value;
+    let userInput = pokeName.innerText;
+    if (pokeName.innerText == "NAME")
+    {
+        return;
+    }
     saveToLocalStorage(userInput);
     LoadFavorites();
 })
 
-// LoadFavorites();
+
 
 const LoadFavorites = async () => {
 
     let localStorage = getFromLocalStorage();
-    favoritesList.innerText = "";
-    localStorage.map(favorites => {
+    favoritesList.innerHTML = "";
+    for (let i = 0; i < localStorage.length; i++)
+    {
+        
         let liTag = document.createElement('li');
         let removeButton = document.createElement('button');
-        removeButton.innerText = "x";
+        removeButton.innerText = "X";
+        removeButton.classList.add('m-2');
         removeButton.addEventListener('click', () => {
-            removeFromLocalStorage(favorites);
-            liTag.remove();
+            removeFromLocalStorage(localStorage[i]);
+            LoadFavorites();
     })
-    
-        liTag.innerText = favorites;
+        liTag.innerText = localStorage[i];
         liTag.addEventListener('click', function() {
-            // favoritesLoading(favorites);
         })
         liTag.appendChild(removeButton);
         favoritesList.appendChild(liTag);
-    })
-
+    }
 }
 
+LoadFavorites();
