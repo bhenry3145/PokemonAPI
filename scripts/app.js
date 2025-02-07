@@ -133,7 +133,7 @@ const Pokemon = async (pokemonData) => {
     const promise = await fetch(`https://pokeapi.co/api/v2/pokemon/${evoData.chain.species.name}`);
     const pokeData = await promise.json();
     let eevee = document.createElement('img');
-    eevee.src = pokeData.sprites.front_default;
+    eevee.src = pokeData.sprites.other["official-artwork"].front_default;
     eevee.classList.add('bg-[#FAD69F]', 'w-[75px]', 'h-[75px]', 'md:w-[125px]', 'md:h-[125px]', 'lg:w-[150px]', 'lg:h-[150px]', 'self-center', 'rounded-[15px]')
     evolutionContainer.appendChild(eevee);
     for (let i = 0; i < evoData.chain.evolves_to.length; i++)
